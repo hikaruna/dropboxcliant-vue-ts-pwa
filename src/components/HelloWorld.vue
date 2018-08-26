@@ -1,5 +1,6 @@
 <template>
   <div class="hello">
+    <button @click='onAuthButtonClick'>auth</button>
     <h1>{{ msg }}</h1>
     <p>
       For guide and recipes on how to configure / customize this project,<br>
@@ -35,10 +36,28 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Dropbox } from 'dropbox';
 
 @Component
 export default class HelloWorld extends Vue {
   @Prop() private msg!: string;
+  private dbx: Dropbox;
+
+  constructor() {
+    super();
+    this.dbx = new Dropbox({ accessToken: ACCESSTOKEN });
+    this.dbx.filesListFolder({path: ''})
+    .then( (response) => {
+      console.log(response);
+    })
+    .catch( (error) => {
+      console.log(error);
+    });
+  }
+
+  private onAuthButtonClick(): void {
+    this.dbx.getAuthenticationUrl('localhost:8080');
+  }
 }
 </script>
 
