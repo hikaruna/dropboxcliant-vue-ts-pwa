@@ -5,6 +5,7 @@ app:
     NODE_ENV: development
   ports:
     - '8080:8080'
+    - '9222:9222'
   volumes:
     - .:/app
     - /app/node_modules
