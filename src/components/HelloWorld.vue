@@ -45,7 +45,8 @@ export default class HelloWorld extends Vue {
 
   constructor() {
     super();
-    this.dbx = new Dropbox({ accessToken: ACCESSTOKEN });
+    this.dbx = new Dropbox({ accessToken: process.env.VUE_APP_DROPBOX_ACCESS_TOKEN });
+    console.log(`secret: ${process.env.VUE_APP_DROPBOX_ACCESS_TOKEN}`);
     this.dbx.filesListFolder({path: ''})
     .then( (response) => {
       console.log(response);

@@ -1,6 +1,14 @@
 # my-app1
 
 ## Project setup
+
+put .env
+Dropbox Conosoleで、Generated access tokenで作る
+
+```
+VUE_APP_DROPBOX_ACCESS_TOKEN=xxxxxxxx
+```
+
 ```
 yarn install
 ```
